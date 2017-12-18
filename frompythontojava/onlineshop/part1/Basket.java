@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Basket{
 
-    private Iterator iterator;
+    private ProductIterator iterator;
     private ArrayList<Product> productList;
 
     public Iterator getIterator() {
-       return new ProductIterator();
+        return iterator;
     }
 
     public void addProduct(Product product){
@@ -25,8 +25,12 @@ public class Basket{
             result = false;
         }
         return result;
-
     }
+
+    public ArrayList getProductList(){
+        return productList;
+    }
+
     private class ProductIterator implements Iterator{
 
         int index;
@@ -42,7 +46,6 @@ public class Basket{
         
         @Override
         public Object next() {
-            
                if(this.hasNext()){
                   return productList.get(index++);
                }
