@@ -35,13 +35,13 @@ public class Product{
 
     public String toString(FeaturedProductCategory category){
         return  String.format("%s: ID: %s, NAME: %s, DEFAULT PRICE: %s, CATEGORY: ID %s - %s, EXPIRY DATE: %s\n",
-                this.getClass().getSimpleName(),
-                this.product_id.toString(),
-                this.name,
-                this.defaultPrice.toString(),
-                this.productCategory.getID(),
-                this.productCategory.getName(),
-                category.getExpirationDate().toString());
+                              category.getClass().getSimpleName(),
+                              this.product_id.toString(),
+                              this.name,
+                              this.defaultPrice.toString(),
+                              this.productCategory.getID(),
+                              this.productCategory.getName(),
+                              category.getExpirationDate().toString());
     }
 
     public ArrayList<Product> getAllProducts(){
@@ -62,5 +62,9 @@ public class Product{
         Integer id = nextID;
         nextID++;
         return id;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

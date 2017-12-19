@@ -4,6 +4,7 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class Main {
     
@@ -41,10 +42,23 @@ public class Main {
         basket.addProduct(A);
         basket.addProduct(B);
         basket.addProduct(C);
-        for(int i = 0; i < basket.getBasketProductList().size(); i++){
-            System.out.println(basket.getBasketProductList().get(i));
-        }
+
+        iterallo(basket);
         System.out.println(product.getAllProductsBy(dyski));
+        System.out.println("dupa");
+        basket.removeProduct(B);
+        iterallo(basket);
+
+
+        System.out.println("dupa");
+        }
+    private static void iterallo(Basket basket){
+        Iterator basketIterator = basket.getIterator();
+        while(basketIterator.hasNext()) {
+			String basketObj = basketIterator.next().toString();
+			System.out.println(basketObj);
         }
     }
+}
     
+

@@ -8,6 +8,7 @@ public class Basket{
     private ArrayList<Product> productList = new ArrayList<Product>();
 
     public Iterator getIterator() {
+        iterator = new ProductIterator();
         return iterator;
     }
 
