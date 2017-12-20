@@ -1,1 +1,1 @@
-Compiled class repo
+Compiled class directory
