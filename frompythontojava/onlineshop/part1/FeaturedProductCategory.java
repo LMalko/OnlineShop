@@ -11,7 +11,7 @@ public class FeaturedProductCategory extends ProductCategory{
         this.expirationDate = expirationDate;
     }
 
-    public Date getExpirationDate(){
-        return expirationDate;
+    public String getExpirationDate(){
+        return expirationDate.toString();
     }
 }
