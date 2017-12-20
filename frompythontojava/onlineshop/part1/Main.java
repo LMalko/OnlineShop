@@ -26,10 +26,19 @@ public class Main {
         catch(ParseException e){
 
         }
+        Date myDate2 = new Date();
+        String inputString2 = "12-12-2034";
+        DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+            myDate = dateFormat2.parse(inputString);
+        }
+        catch(ParseException e){
+
+        }
         
-        ProductCategory dyski = new ProductCategory("dyski");
+        FeaturedProductCategory dyski = new FeaturedProductCategory("dyski", myDate);
         ProductCategory tv = new ProductCategory("tv");
-        FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate);
+        FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate2);
     
 
         Product A = new Product("Maciej", a, dyski);
@@ -37,7 +46,7 @@ public class Main {
         Product C = new Product("Grzegorz", c, mp3);
         System.out.println(A.toString());
         System.out.println(B.toString());
-        System.out.println(C.toString(mp3));
+        System.out.println(C.toString());
         System.out.println(product.getAllProducts());
         basket.addProduct(A);
         basket.addProduct(B);

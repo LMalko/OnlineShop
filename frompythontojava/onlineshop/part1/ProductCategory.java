@@ -19,9 +19,12 @@ public class ProductCategory{
     public Integer getID(){
         return ID;
     }
-    public static Integer getNextID() {
+    public Integer getNextID() {
         Integer id = nextID;
         nextID++;
         return id;
+    }
+    public String getExpirationDate(){
+        return "Unspecified";
     }
 }

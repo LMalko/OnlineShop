@@ -25,23 +25,15 @@ public class Product{
     }
 
     public String toString(){
-        return String.format("ID: %s, NAME: %s, DEFAULT PRICE: %s, CATEGORY: %s - %s \n",
-                             this.product_id.toString(), 
-                             this.name,
-                             this.defaultPrice.toString(),
-                             this.productCategory.getID(),
-                             this.productCategory.getName());
-    }
-
-    public String toString(FeaturedProductCategory category){
-        return  String.format("%s: ID: %s, NAME: %s, DEFAULT PRICE: %s, CATEGORY: ID %s - %s, EXPIRY DATE: %s\n",
-                              category.getClass().getSimpleName(),
+        return  String.format("%s: ID: %s, NAME: %s, DEFAULT PRICE: %s, %s: ID: %s, TYPE: %s, EXPIRY DATE: %s\n",
+                              this.getClass().getSimpleName(),
                               this.product_id.toString(),
                               this.name,
                               this.defaultPrice.toString(),
+                              this.productCategory.getClass().getSimpleName().toUpperCase(),
                               this.productCategory.getID(),
                               this.productCategory.getName(),
-                              category.getExpirationDate().toString());
+                              this.productCategory.getExpirationDate());
     }
 
     public ArrayList<Product> getAllProducts(){
@@ -58,7 +50,7 @@ public class Product{
         return result;
     }
 
-    public static Integer getNextID() {
+    public Integer getNextID() {
         Integer id = nextID;
         nextID++;
         return id;
