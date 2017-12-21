@@ -17,15 +17,7 @@ public class Basket{
     }
 
     public Boolean removeProduct(Product product){
-        Boolean result;
-        if(productList.contains(product)){
-            productList.remove(product);
-            result = true;
-        }
-        else{
-            result = false;
-        }
-        return result;
+        return productList.remove(product);
     }
 
     public ArrayList<Product> getBasketProductList(){
