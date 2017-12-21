@@ -1,36 +1,70 @@
 package frompythontojava.onlineshop.part2;
 
+import frompythontojava.onlineshop.part1.Basket;
+import frompythontojava.onlineshop.part1.Product;
+
 public class Order implements Orderable{
 
     private int id;
-    private String status = "NEW";
+    private String status;
+    private Basket basket;
+    private Double basketPrice = 0.0;
 
     private static Integer nextID = 100;
 
-    public Order(){
+    public Order(Basket basket){
         this.id = getNextID();
+        this.status = "NEW";
+        this.basket = basket;
+        this.getBasketPrice();
     }
 
     public String getStatus(){
         return this.status;
     }
 
+    @Override
     public boolean checkout(){
-        return this.status.equals("NEW");
-    }
-
-    public boolean pay(){
+        if(this.status.equals("NEW")){
+            this.status = "CHECKED";
+        }
         return this.status.equals("CHECKED");
     }
 
-    public Integer getNextID() {
-        Integer id = nextID;
+    @Override
+    public boolean pay(){
+        if(this.status.equals("CHECKED")){
+            this.status = "PAYED";
+        }
+        return this.status.equals("PAYED");
+    }
+
+    private Integer getNextID() {
+        Integer newID = nextID;
         nextID++;
-        return id;
+        return newID;
     }
 
     public String toString(){
-        return String.format("Order number: %s status is - %s", this.id, this.status);
+        return String.format("Order number: %s, the status is - %s, total price is %s",
+                             this.id,
+                             this.status,
+                             this.basketPrice);
+    }
+    
+    public int getOrderID(){
+        return this.id;
     }
 
+    public Basket getOrderBasket(){
+        return this.basket;
+    }
+
+    public Double getBasketPrice(){
+        int i;
+        for(i = 0; i < this.basket.getBasketProductList().size(); i++){
+            this.basketPrice += this.basket.getBasketProductList().get(i).getDefaultPrice();
+        }
+        return this.basketPrice;
+    }
 }

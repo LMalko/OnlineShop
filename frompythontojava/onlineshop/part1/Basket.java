@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Basket{
 
-    private ProductIterator iterator;
+    private Iterator iterator;
     private ArrayList<Product> productList = new ArrayList<Product>();
 
     public Iterator getIterator() {
@@ -30,7 +30,6 @@ public class Basket{
 
         @Override
         public boolean hasNext() {
-            
                if(index < productList.size()){
                   return true;
                }

@@ -25,19 +25,20 @@ public class TEST {
         catch(ParseException e){
 
         }
-        Date myDate2 = new Date();
-        String inputString2 = "12-12-2034";
-        DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
+        FeaturedProductCategory dyski = new FeaturedProductCategory("dyski", myDate);
+
+        myDate = new Date();
+        inputString = "12-12-2034";
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try{
-            myDate = dateFormat2.parse(inputString2);
+            myDate = dateFormat.parse(inputString);
         }
         catch(ParseException e){
 
         }
-        
-        FeaturedProductCategory dyski = new FeaturedProductCategory("dyski", myDate);
+
         ProductCategory tv = new ProductCategory("tv");
-        FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate2);
+        FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate);
     
 
         Product A = new Product("Maciej", a, dyski);
@@ -84,19 +85,20 @@ public class TEST {
             catch(ParseException e){
     
             }
-            Date myDate2 = new Date();
-            String inputString2 = "12-12-2034";
-            DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
+            FeaturedProductCategory dyski = new FeaturedProductCategory("dyski", myDate);
+
+            myDate = new Date();
+            inputString = "12-12-2034";
+            dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             try{
-                myDate = dateFormat2.parse(inputString2);
+                myDate = dateFormat.parse(inputString);
             }
             catch(ParseException e){
     
             }
             
-            FeaturedProductCategory dyski = new FeaturedProductCategory("dyski", myDate);
             ProductCategory tv = new ProductCategory("tv");
-            FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate2);
+            FeaturedProductCategory mp3 = new FeaturedProductCategory("mp3", myDate);
         
     
             Product A = new Product("Maciej", a, dyski);

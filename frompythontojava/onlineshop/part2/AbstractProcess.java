@@ -11,13 +11,13 @@ abstract class AbstractProcess {
         stepAfter();
     }
     public void stepBefore(){
-        System.out.println(item.toString());
+        System.out.println("ORDER STATUS WAS --> " + item.toString() + "\n");
 
     }
     protected abstract void action(Orderable item);
 
     public void stepAfter(){
-        System.out.println(item.toString());
+        System.out.println("ORDER UPDATE --> " + item.toString());
     }
 
 }

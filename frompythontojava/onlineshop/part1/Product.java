@@ -1,13 +1,15 @@
 package frompythontojava.onlineshop.part1;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Product{
 
     private String name;
     private Float defaultPrice;
     private ProductCategory productCategory;
-    private Integer product_id;
+    private Integer ID;
     private static ArrayList<Product> productList = new ArrayList<Product>();
 
     private static Integer nextID = 1000;
@@ -19,15 +21,16 @@ public class Product{
         this.name = name;
         this.defaultPrice = defaultPrice;
         this.productCategory = productCategory;
-        this.product_id = getNextID();
+        this.ID = getNextID();
 
         productList.add(this);
     }
 
+    @Override
     public String toString(){
         return  String.format("%s: ID: %s, NAME: %s, DEFAULT PRICE: %s, %s: ID: %s, TYPE: %s, EXPIRY DATE: %s\n",
                               this.getClass().getSimpleName(),
-                              this.product_id.toString(),
+                              this.ID.toString(),
                               this.name,
                               this.defaultPrice.toString(),
                               this.productCategory.getClass().getSimpleName().toUpperCase(),
@@ -50,13 +53,33 @@ public class Product{
         return result;
     }
 
-    public Integer getNextID() {
-        Integer id = nextID;
+    private Integer getNextID() {
+        Integer newID = nextID;
         nextID++;
-        return id;
+        return newID;
     }
 
     public String getName(){
         return this.name;
+    }
+
+    public Integer getProductID(){
+        return this.ID;
+    }
+
+    public Float getDefaultPrice(){
+        return this.defaultPrice;
+    }
+
+    public String getProductCategory(){
+        return this.productCategory.getName();
+    }
+
+    public Integer getProductCategoryID(){
+        return this.productCategory.getID();
+    }
+
+    public Date getProductExpirationDate(){
+        return this.productCategory.getExpirationDate();
     }
 }
