@@ -4,7 +4,7 @@ import frompythontojava.onlineshop.part1.TEST;
 import frompythontojava.onlineshop.part1.Basket;
 
 
-public class Main {
+public class TEST2 {
 
     public static void main(String[] args) {
 
