@@ -12,16 +12,14 @@ public class ProductCategory{
     private Integer ID;
 
     private static Integer nextID = 0;
-    private Date expirationDate;
+    private final String defaultExpirationDate = "Unspecified";
 
     public ProductCategory(){
-
     }
     
     public ProductCategory(String name){
         this.name = name;
         this.ID = getNextID();
-        this.expirationDate = this.assignExpirationDate();
 
     }
     public String getName(){
@@ -35,18 +33,7 @@ public class ProductCategory{
         nextID++;
         return newID;
     }
-    public Date getExpirationDate(){
-        return this.expirationDate;
-    }
-    private Date assignExpirationDate(){
-        Date myDate = new Date();
-        String inputString = "01-01-2100";
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        try{
-            myDate = dateFormat.parse(inputString);
-        }
-        catch(ParseException e){
-        }
-        return myDate;
+    public String getExpirationDateString(){
+        return this.defaultExpirationDate;
     }
 }

@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class FeaturedProductCategory extends ProductCategory{
 
-    private Date expirationDate;
+    private String expirationDate;
 
     public FeaturedProductCategory(String name, Date expirationDate){
         super(name);
-        this.expirationDate = expirationDate;
+        this.expirationDate = expirationDate.toString();
     }
-
+    
     @Override
-    public Date getExpirationDate(){
-        return expirationDate;
+    public String getExpirationDateString(){
+        return this.expirationDate;
     }
 }

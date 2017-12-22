@@ -1,7 +1,6 @@
 package frompythontojava.onlineshop.part1;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class Product{
@@ -36,7 +35,7 @@ public class Product{
                               this.productCategory.getClass().getSimpleName().toUpperCase(),
                               this.productCategory.getID(),
                               this.productCategory.getName(),
-                              this.productCategory.getExpirationDate());
+                              this.productCategory.getExpirationDateString());
     }
 
     public ArrayList<Product> getAllProducts(){
@@ -79,7 +78,7 @@ public class Product{
         return this.productCategory.getID();
     }
 
-    public Date getProductExpirationDate(){
-        return this.productCategory.getExpirationDate();
+    public String getProductExpirationDate(){
+        return this.productCategory.getExpirationDateString();
     }
 }

@@ -5,14 +5,7 @@ import frompythontojava.onlineshop.part1.Iterator;
 import java.util.Scanner;
 
 public class View {
-
-    private Basket basket = new Basket();
-    private Iterator basketIterator;
-
-    public View(){
-        this.basketIterator = basket.getIterator();
-    }
-
+    
     public void displayMenu(){
         System.out.println("MALPKA EXPRESS ONLINE\n\n" +
                            "1.  Create new product.\n" +
@@ -24,21 +17,23 @@ public class View {
                            "7.  Get list of available products.\n" +
                            "8.  Get list of available products by given category.\n" +
                            "9.  Check availability of product.\n" +
-                           "10. Checkout and pay.");
+                           "10. Checkout and pay.\n" +
+                           "0.  Quit.\n");
     }
 
     public String takeUserInput(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+        scanner.close();
         return input;
     }
 
-    public void displayMessage(String message){
-        System.out.println(message);
+    public void displayText(String text){
+        System.out.println(text);
     }
 
     public void clearScreen(){  
-        for(int clear = 0; clear < 50; clear++){
+        for(int clear = 0; clear < 60; clear++){
            System.out.println("\b");
         }
     }
