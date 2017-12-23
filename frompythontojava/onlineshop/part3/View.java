@@ -24,7 +24,6 @@ public class View {
     public String takeUserInput(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        scanner.close();
         return input;
     }
 
