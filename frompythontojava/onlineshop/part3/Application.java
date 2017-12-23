@@ -151,6 +151,7 @@ public class Application {
 
         return category;
     }
+
     private void addProductsToBasket(){
         displayProducts();
         this.view.displayText("Choose name: ");
@@ -163,6 +164,7 @@ public class Application {
             }
         }
     }
+
     private void displayBasket(){
         this.view.displayText("Basket:");
         Iterator basketIterator = basket.getIterator();
@@ -172,6 +174,7 @@ public class Application {
         }
         this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
+
     private void removeFromBasket(){
         displayBasket();
         this.view.displayText("Choose name: ");
@@ -184,6 +187,7 @@ public class Application {
             }
         }
     }
+
     private void displayProducts(){
         this.view.displayText("Products");
         for(int i = 0; i < this.product.getAllProducts().size(); i++){
@@ -191,6 +195,7 @@ public class Application {
         }
         this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
+
     private void displayProductsByGivenCategory(){
         this.view.displayText("Choose category: ");
         String category = this.view.takeUserInput();
@@ -204,6 +209,7 @@ public class Application {
         }
         this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
+
     private void checkIfProductExists(){
         this.view.displayText("Choose product name: ");
         String product = this.view.takeUserInput();
@@ -217,6 +223,7 @@ public class Application {
         }
         this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
+
     private void runCheckoutAndPaymentProcess(){
         Order newOrder = new Order(this.basket);
         CheckoutProcess checkout = new CheckoutProcess();
@@ -227,6 +234,7 @@ public class Application {
         this.view.displayText("Payment process has been finished\n\n\n\n\n");
         this.basket = new Basket();
     }
+    
     private Date createDateFromUser(){
         Boolean isDateCorrect = false;
         Date date = new Date();
@@ -243,6 +251,7 @@ public class Application {
         }
         return date;
     }
+
     private Date createInitDate(String initDate){
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -253,11 +262,14 @@ public class Application {
         }
         return date;
     }
+
     private void displayProductsCategories(){
         for(int i = 0; i < this.productCategories.size(); i++){
-            this.view.displayText(String.format("%s %s expires %s", this.productCategories.get(i).getID(),
-                                                this.productCategories.get(i).getName(),
-                                                this.productCategories.get(i).getExpirationDateString()));
+            this.view.displayText(String.format("%s ID %s %s EXPIRY DATE: %s",
+                                            this.productCategories.get(i).getClass().getSimpleName(),
+                                            this.productCategories.get(i).getID(),
+                                            this.productCategories.get(i).getName(),
+                                            this.productCategories.get(i).getExpirationDateString()));
         }
         this.view.displayText("\n\n\n\n\n");
     }
