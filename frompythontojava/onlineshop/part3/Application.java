@@ -40,16 +40,21 @@ public class Application {
 
             if(userChoice.equals("1")){
                 createNewProduct();
+                this.view.clearScreen();
             }else if(userChoice.equals("2")){
                 createNewProductCategory();
+                this.view.clearScreen();
             }else if(userChoice.equals("3")){
                 createNewFeaturedProductCategory();
+                this.view.clearScreen();
             }else if(userChoice.equals("4")){
                 addProductsToBasket();
+                this.view.clearScreen();
             }else if(userChoice.equals("5")){
                 displayBasket();
             }else if(userChoice.equals("6")){
                 removeFromBasket();
+                this.view.clearScreen();
             }else if(userChoice.equals("7")){
                 displayProducts();
             }else if(userChoice.equals("8")){
@@ -57,14 +62,15 @@ public class Application {
             }else if(userChoice.equals("9")){
                 checkIfProductExists();
             }else if(userChoice.equals("10")){
-                checkOutAndPay();
+                runCheckoutAndPaymentProcess();
+            }else if(userChoice.equals("11")){
+                displayProductsCategories();
             }else if(userChoice.equals("0")){
                 programRun = false;
                 this.view.clearScreen();
             }else{
-                this.view.displayText("No such choice.");
+                this.view.displayText("No such choice.\n\n\n\n\n");
             }
-            this.view.clearScreen();
         }
     }
 
@@ -145,29 +151,81 @@ public class Application {
 
         return category;
     }
-    private String addProductsToBasket(){
-        return "Dupa.";
+    private void addProductsToBasket(){
+        displayProducts();
+        this.view.displayText("Choose name: ");
+        String productName = this.view.takeUserInput();
+        productName = productName.substring(0, 1).toUpperCase() + productName.substring(1);
+        for(int i = 0; i < this.product.getAllProducts().size(); i++){
+            if(productName.equals(this.product.getAllProducts().get(i).getName())){
+                basket.addProduct(this.product.getAllProducts().get(i));
+                this.view.displayText("Done");
+            }
+        }
     }
-    private String displayBasket(){
-        return "Dupa.";
+    private void displayBasket(){
+        this.view.displayText("Basket:");
+        Iterator basketIterator = basket.getIterator();
+        while(basketIterator.hasNext()) {
+            String basketObj = basketIterator.next().toString();
+            this.view.displayText(basketObj);
+        }
+        this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
-    private String removeFromBasket(){
-        return "Dupa.";
+    private void removeFromBasket(){
+        displayBasket();
+        this.view.displayText("Choose name: ");
+        String productName = this.view.takeUserInput();
+        productName = productName.substring(0, 1).toUpperCase() + productName.substring(1);
+        for(int i = 0; i < this.basket.getBasketProductList().size(); i++){
+            if(productName.equals(this.basket.getBasketProductList().get(i).getName())){
+                this.basket.removeProduct(this.basket.getBasketProductList().get(i));
+                this.view.displayText("Done");
+            }
+        }
     }
     private void displayProducts(){
+        this.view.displayText("Products");
         for(int i = 0; i < this.product.getAllProducts().size(); i++){
             this.view.displayText(this.product.getAllProducts().get(i).toString());
         }
         this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
-    private String displayProductsByGivenCategory(){
-        return "Dupa.";
+    private void displayProductsByGivenCategory(){
+        this.view.displayText("Choose category: ");
+        String category = this.view.takeUserInput();
+        this.view.clearScreen();
+        this.view.displayText("Products");
+        category = category.substring(0, 1).toUpperCase() + category.substring(1);
+        for(int i = 0; i < this.product.getAllProducts().size(); i++){
+            if(category.equals(this.product.getAllProducts().get(i).getProductCategory())){
+                this.view.displayText(this.product.getAllProducts().get(i).toString());
+            }
+        }
+        this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
-    private String checkIfProductExists(){
-        return "Dupa.";
+    private void checkIfProductExists(){
+        this.view.displayText("Choose product name: ");
+        String product = this.view.takeUserInput();
+        this.view.clearScreen();
+        this.view.displayText("Products");
+        product = product.substring(0, 1).toUpperCase() + product.substring(1);
+        for(int i = 0; i < this.product.getAllProducts().size(); i++){
+            if(product.equals(this.product.getAllProducts().get(i).getName())){
+                this.view.displayText(this.product.getAllProducts().get(i).toString());
+            }
+        }
+        this.view.displayText("\n\n\n\n\n\n\n\n\n");
     }
-    private String checkOutAndPay(){
-        return "Dupa.";
+    private void runCheckoutAndPaymentProcess(){
+        Order newOrder = new Order(this.basket);
+        CheckoutProcess checkout = new CheckoutProcess();
+        checkout.process(newOrder);
+        this.view.displayText("Checkout process has been finished\n\n\n\n\n");
+        PaymentProcess payment = new PaymentProcess();
+        payment.process(newOrder);
+        this.view.displayText("Payment process has been finished\n\n\n\n\n");
+        this.basket = new Basket();
     }
     private Date createDateFromUser(){
         Boolean isDateCorrect = false;
@@ -197,7 +255,9 @@ public class Application {
     }
     private void displayProductsCategories(){
         for(int i = 0; i < this.productCategories.size(); i++){
-            this.view.displayText(this.productCategories.get(i).getName());
+            this.view.displayText(String.format("%s %s expires %s", this.productCategories.get(i).getID(),
+                                                this.productCategories.get(i).getName(),
+                                                this.productCategories.get(i).getExpirationDateString()));
         }
         this.view.displayText("\n\n\n\n\n");
     }

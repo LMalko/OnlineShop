@@ -18,6 +18,7 @@ public class View {
                            "8.  Get list of available products by given category.\n" +
                            "9.  Check availability of product.\n" +
                            "10. Checkout and pay.\n" +
+                           "11. Display product categories\n" +
                            "0.  Quit.\n");
     }
 
